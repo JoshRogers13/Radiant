@@ -1,0 +1,43 @@
+{% assign per_page = 20 %}
+
+{% paginate collection.products by per_page %}
+
+<div class="collection-page" id="collection-{{ collection.handle }}">
+
+  <div class="collection-grid-outer wrapper" data-load-more='{
+    "loadingText": "Loading...",
+    "historyState": true,
+    "basePage": {{ paginate.current_page | json }}
+  }'> 
+
+    {% if paginate.previous %}
+      <div class="load-more-container flex f-j-center" data-load-previous-trigger-container>
+        <a class="btn" href="{{ paginate.previous.url }}" data-load-previous-trigger>
+          Load Previous
+          {% include 'icon-plus' %}
+        </a>
+      </div>
+    {% endif %}
+
+    <ul class="collection-grid flex f-grid--m--desktop f-grid--s--tablet" data-load-more-container>
+      {% for product in collection.products %}
+        <li>
+          {% include 'product-grid-item' %}
+        </li>
+      {% endfor %}
+    </ul>
+    
+    {% if paginate.next %}
+      <div class="load-more-container flex f-j-center" data-load-more-trigger-container>
+        <a class="btn" href="{{ paginate.next.url }}" data-load-more-trigger>
+          Load More
+          {% include 'icon-plus' %}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+
+</div>
+
+{% endpaginate %}

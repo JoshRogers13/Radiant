@@ -1,0 +1,144 @@
+{% assign resetSuccess = false %}
+{% form 'recover_customer_password', class: 'hide' %}
+  {% if form.posted_successfully? %}
+    {% assign resetSuccess = true %}
+  {% endif %}
+{% endform %} 
+
+
+
+<div class="account-page wrapper">
+
+  <div class="account-inner">
+
+    {% if resetSuccess %}
+    <div class="note form-success" id="ResetSuccess">
+      {{ 'customer.recover_password.success' | t }}
+    </div>
+    {% endif %} 
+
+    <div id="CustomerLoginForm" class="form-vertical">
+      {% form 'customer_login', class: 'bordered-inputs' %}
+
+        <h1 class="text-center">{{ 'customer.login.title' | t }}</h1>
+
+        {{ form.errors | default_errors }}
+        
+        <div class="input-field">
+          <input required placeholder="{{ 'customer.login.email' | t }}" type="email" name="customer[email]" id="CustomerEmail" class="{% if form.errors contains 'email' %} input--error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
+        </div>
+
+        {% if form.password_needed %}
+          <div class="input-field">
+            <input placeholder="{{ 'customer.login.password' | t }}" type="password" value="" required name="customer[password]" id="CustomerPassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+          </div>
+        {% endif %}
+
+        <div class="text-center form-bottom-area">
+
+          <button type="submit" class="btn">
+            <span>
+              {{ 'customer.login.sign_in' | t }}
+            </span>
+          </button>
+
+          {% if form.password_needed %}
+            <p><a data-toggle-classes='
+              [
+                  {
+                      "on": "click",
+                      "class": "hide",
+                      "target": "#RecoverPasswordForm",
+                      "method": "remove"
+                  },
+                  {
+                      "on": "click",
+                      "class": "hide",
+                      "target": "#CustomerLoginForm",
+                      "method": "add"
+                  }
+              ]' href="#recover" hreflang="en-gb"  id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a></p>
+          {% endif %}
+
+          <p>
+            {{ 'customer.register.title' | t | customer_register_link }}
+          </p>
+        </div>
+
+      {% endform %}
+    </div>
+
+    <div id="RecoverPasswordForm" class="hide">
+
+      <div class="text-center">
+        <h2>{{ 'customer.recover_password.title' | t }}</h2>
+        <p class="note">{{ 'customer.recover_password.subtext' | t }}</p>
+      </div>
+
+      <div class="form-vertical">
+        {% form 'recover_customer_password', class: 'bordered-inputs' %}
+
+          {{ form.errors | default_errors }}
+
+          {% comment %}
+            Add a hidden span to indicate the form was submitted succesfully.
+          {% endcomment %}
+          {% if form.posted_successfully? %}
+            <span class="hide reset-password-success"></span>
+          {% endif %}
+          
+          <div class="input-field">
+            <input required placeholder="{{ 'customer.recover_password.email' | t }}" type="email" value="" name="email" id="RecoverEmail" class="input-full"autocorrect="off" autocapitalize="off">
+          </div>
+
+          <div class="text-center form-bottom-area">
+            
+            <p>
+              <button type="submit" class="btn">
+                <span>
+                  {{ 'customer.recover_password.submit' | t }}
+                </span>
+              </button>
+            </p>
+
+            <a href="#" hreflang="en-gb" data-toggle-classes='
+              [
+                  {
+                      "on": "click",
+                      "class": "hide",
+                      "target": "#RecoverPasswordForm",
+                      "method": "add"
+                  },
+                  {
+                      "on": "click",
+                      "class": "hide",
+                      "target": "#CustomerLoginForm",
+                      "method": "remove"
+                  }
+              ]' id="HideRecoverPasswordLink" class="text-link">{{ 'customer.recover_password.cancel' | t }}</a>
+          </div>
+        {% endform %}
+      </div>
+
+    </div>
+
+    {% comment %}
+      If accounts are set as optional, the following will be shown as an option
+      during checkout, not on the default /login page.
+    {% endcomment %}
+    {% if shop.checkout.guest_login %}
+      <div class="text-center guest-box">
+        <h3>Or</h3>
+        <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+        {% form 'guest_login' %}
+          <button type="submit" class="btn">
+            <span>{{ 'customer.login.guest_continue' | t }}</span>
+          </button>
+        {% endform %}
+      </div>
+    {% endif %}
+    
+  </div>
+
+</div>

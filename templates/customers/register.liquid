@@ -1,0 +1,43 @@
+<div class="account-page wrapper">
+
+  <div class="account-inner">
+
+    <div class="form-vertical">
+      {% form 'create_customer', class: "bordered-inputs" %}
+
+        <h1 class="text-center">{{ 'customer.register.title' | t }}</h1>
+
+        {{ form.errors | default_errors }}
+        
+        <div class="input-field">
+          <input placeholder="{{ 'customer.register.first_name' | t }}" type="text" name="customer[first_name]" id="FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autofocus>
+        </div>
+
+        <div class="input-field">
+          <input placeholder="{{ 'customer.register.last_name' | t }}" type="text" name="customer[last_name]" id="LastName" {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+        </div>
+        
+        <div class="input-field">
+          <input placeholder="{{ 'customer.register.email' | t }}" type="email" name="customer[email]" id="Email" class="{% if form.errors contains 'email' %} input--error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+        </div>
+        
+        <div class="input-field">
+          <input placeholder="{{ 'customer.register.password' | t }}" type="password" name="customer[password]" id="CreatePassword" class="{% if form.errors contains 'password' %} input--error{% endif %}">
+        </div>
+        
+        <footer class="form-footer">
+          <button type="submit" class="btn">
+            <span>
+              {{ 'customer.register.submit' | t }}
+            </span>
+          </button>
+
+          <a href="/account/login" class="text-link">{{ 'customer.login.title' | t }}</a>
+        </footer>
+
+      {% endform %}
+    </div>
+
+  </div>
+
+</div>
