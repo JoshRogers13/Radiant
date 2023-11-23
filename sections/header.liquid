@@ -32,7 +32,11 @@
                         {{ link.title }}
                     </a>
                 {% endfor %}
+                <button class="close-navigation">
+                    {% render 'icons' with 'delete' %}
+                </button>
             </div>
+            <div class="header--overlay"></div>
             <div class="header--link-wrapper">
                 <div class="header--icon-link">
                     <a href="#">{% render 'icons' with 'search' %}</a>
