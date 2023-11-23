@@ -36,7 +36,11 @@ Common
   justify-content: space-between;
   padding: 40px 0;
   position: relative;
+  transition: var(--default-transition);
   width: 100%;
+}
+.accordion--wrapper .accordion--blocks-wrapper .accordion--item .accordion--item-title:hover {
+  opacity: var(--default-fade-opacity);
 }
 .accordion--wrapper .accordion--blocks-wrapper .accordion--item .accordion--item-title svg {
   width: 0.8em;

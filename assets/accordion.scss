@@ -45,7 +45,12 @@ Common
                 justify-content: space-between;
                 padding: 40px 0;
                 position: relative;
+                transition: var(--default-transition);
                 width: 100%;
+
+                &:hover {
+                    opacity: var(--default-fade-opacity);
+                }
         
                 svg {
                     width: 0.8em;
