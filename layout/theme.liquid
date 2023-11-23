@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang='{{ shop.locale }}'>
-  <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width,initial-scale=1'>
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width,initial-scale=1'>
 
-    <link rel='canonical' href='{{ canonical_url }}'>
-   
-    {% capture seo_title %}
-      {{ page_title }}
-      {% if current_tags %}
-        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
-      {% endif %}
-      {% if current_page != 1 %}
-        &ndash; {{ 'general.meta.page' | t: page: current_page }}
-      {% endif %}
-      {% unless page_title contains shop.name %}
-        &ndash; {{ shop.name }}
-      {% endunless %}
-    {% endcapture %}
-    <title>{{ seo_title }}</title>
+		<link rel='canonical' href='{{ canonical_url }}'>
+	
+		{% capture seo_title %}
+		{{ page_title }}
+		{% if current_tags %}
+			{%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+		{% endif %}
+		{% if current_page != 1 %}
+			&ndash; {{ 'general.meta.page' | t: page: current_page }}
+		{% endif %}
+		{% unless page_title contains shop.name %}
+			&ndash; {{ shop.name }}
+		{% endunless %}
+		{% endcapture %}
+		<title>{{ seo_title }}</title>
 
-    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+		<style>
+		:root {
+			{% comment %} Layout Variables {% endcomment %}
+			--site-container: {{ settings.site_container }}px;
+			--site-content-container: {{ settings.content_container }}px;
 
-    {{ content_for_header }}
+			--default-transition: .2s;
+			--default-fade-opacity: .6;
 
-    <script src='{{ "theme.js" | asset_url }}' defer></script>
-  </head> 
+			--body-color: #F5F5F5;
+			--body-text-color: #323232;
+		}
+		</style>
 
-  <body>
+		{{ 'theme.css' | asset_url | stylesheet_tag }}
+		{{ 'header.css' | asset_url | stylesheet_tag }}
 
-    <main class="main-content" role='main'>
-      {{ content_for_layout }} 
-    </main>
+		{{ content_for_header }}
 
-  </body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
+		<script src='{{ "theme.js" | asset_url }}' defer></script>
+	</head> 
+
+	<body>
+		{% section 'header' %}
+
+		<main class="main-content" role='main'>
+			{{ content_for_layout }} 
+		</main>
+	</body>
 </html>
