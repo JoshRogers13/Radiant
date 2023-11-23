@@ -26,11 +26,24 @@
       "block_order": [
         "template--16100087857319__185958fb-6555-4ea1-aece-ba16e25cb520-Item-1",
         "template--16100087857319__185958fb-6555-4ea1-aece-ba16e25cb520-Item-2"
-      ]
+      ],
+      "settings": {
+        "section_background_color": "#519757",
+        "section_heading_color": "#ffffff",
+        "section_text_color": "#ffffff",
+        "accordion_items_background_color": "#ffffff",
+        "accordion_items_text_color": "#383838"
+      }
+    },
+    "0f05fb0e-e1b3-4761-a6e3-9247bd9a93ef": {
+      "type": "newsletter",
+      "settings": {
+      }
     }
   },
   "order": [
     "main",
-    "185958fb-6555-4ea1-aece-ba16e25cb520"
+    "185958fb-6555-4ea1-aece-ba16e25cb520",
+    "0f05fb0e-e1b3-4761-a6e3-9247bd9a93ef"
   ]
 }
