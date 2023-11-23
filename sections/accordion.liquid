@@ -1,0 +1,157 @@
+{% comment %}
+    Section specific styling
+        - Items will inherit default styling unless specified
+{% endcomment %}
+{%-liquid
+    assign accordionBackgroundColor = section.settings.section_background_color
+    assign accordionHeadingColor = section.settings.section_heading_color
+    assign accordionTextColor = section.settings.section_text_color
+    assign accordionItemBackgroundColor = section.settings.accordion_items_background_color
+    assign accordionItemTextColor = section.settings.accordion_items_text_color
+%}
+
+<style>
+    {% if accordionBackgroundColor != blank and accordionBackgroundColor.alpha != 0.0 %}    
+        #{{ section.id }}.section--wrapper {
+            background-color: {{ accordionBackgroundColor }};
+        }
+    {% endif %}
+
+    {% if accordionHeadingColor != blank and accordionHeadingColor.alpha != 0.0 %}
+        #{{ section.id }}.section--wrapper .accordion--title,
+        #{{ section.id }}.section--wrapper .accordion--title > * {
+            color: {{ accordionHeadingColor }};
+        }
+    {% endif %}
+
+    {% if accordionTextColor != blank and accordionTextColor.alpha != 0.0 %}
+        #{{ section.id }}.section--wrapper .accordion--content,
+        #{{ section.id }}.section--wrapper .accordion--content > * {
+            color: {{ accordionTextColor }};
+        }
+    {% endif %}
+
+    {% if accordionItemBackgroundColor != blank and accordionItemBackgroundColor.alpha != 0.0 %}
+        #{{ section.id }}.section--wrapper .accordion--blocks-wrapper {
+            background-color: {{ accordionItemBackgroundColor }};
+        }
+    {% endif %}
+
+    {% if accordionItemTextColor != blank and accordionItemTextColor.alpha != 0.0 %}
+        #{{ section.id }}.section--wrapper .accordion--item .accordion--item-title > *,
+        #{{ section.id }}.section--wrapper .accordion--item .accordion--item-content > * {
+            color: {{ accordionItemTextColor }};
+        }
+
+        #{{ section.id }}.section--wrapper .accordion--item svg path {
+            fill: {{ accordionItemTextColor }};
+        }
+    {% endif %}
+</style>
+
+<section id="{{ section.id }}" class="section--wrapper">
+    <div class="content-container">
+        <div class="accordion--wrapper">
+            {% if section.blocks.size > 0 %}
+                <div class="accordion--blocks-wrapper">
+                    {% for block in section.blocks %}
+                        {%-liquid
+                            assign blockTitle = block.settings.accordion_item_title
+                            assign blockContent = block.settings.accordion_item_content
+                        %}
+                        {% if blockTitle != blank %}
+                            <div class="accordion--item">
+                                <div class="accordion--item-title heading-font">
+                                    {{ blockTitle }}
+                                    {% render 'icons' with 'plus' %}
+                                </div>
+                                {% if blockContent != blank %}
+                                    <div class="accordion--item-content">{{ blockContent }}</div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+
+{
+    "name": "Accordion",
+    "settings": [
+        {
+            "type": "color",
+            "id": "section_background_color",
+            "label": "t:settings_schema.sections.settings.section_background_color.label",
+            "default": "#519757"
+        },
+        {
+            "type": "color",
+            "id": "section_heading_color",
+            "label": "t:settings_schema.sections.settings.section_heading_color.label",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "section_text_color",
+            "label": "t:settings_schema.sections.settings.section_text_color.label",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "accordion_items_background_color",
+            "label": "t:settings_schema.sections.accordion.settings.accordion_items_background_color.label",
+            "default": "#ffffff"
+        },
+        {
+            "type": "color",
+            "id": "accordion_items_text_color",
+            "label": "t:settings_schema.sections.accordion.settings.accordion_items_text_color.label",
+            "default": "#383838"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Item",
+            "type": "Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "accordion_item_title",
+                    "label": "t:settings_schema.blocks.settings.block_title.label"
+                },
+                {
+                    "type": "richtext",
+                    "id": "accordion_item_content",
+                    "label": "t:settings_schema.blocks.settings.block_content.label"
+                }
+            ] 
+        }
+    ],
+    "presets": [
+        {
+            "name": "Accordion",
+            "blocks": [
+                {
+                    "type": "Item",
+                    "settings": {
+                        "accordion_item_title": "What is your brand mission?",
+                        "accordion_item_content": "<p>Our brand mission is to empower individuals by providing innovative solutions that enhance everyday experiences. We are committed to fostering positive change and creating a lasting impact through our products and services.</p>"
+                    }
+                },
+                {
+                    "type": "Item",
+                    "settings": {
+                        "accordion_item_title": "When was the brand founded and why?",
+                        "accordion_item_content": "<p>The brand was founded in 2010 with a mission to revolutionize sustainable living through cutting-edge technology and eco-friendly products. Inspired by the need for innovative solutions to environmental challenges, we strives to make a positive impact on the world by promoting a greener and more sustainable future.</p>"
+                    }
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}

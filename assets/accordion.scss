@@ -1,0 +1,91 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------------
+Common
+-------------------------------------------------------------------------------------------------------------------------------------------------- */
+.accordion--wrapper {
+    .accordion--blocks-wrapper {
+        align-items: flex-start;
+        border-radius: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px 40px;
+
+        .accordion--item {
+            width: 100%;
+            
+            & + .accordion--item {
+                .accordion--item-title {
+                    border-top: 1px solid #ddd;
+                }
+            }
+
+            &.open {
+                .icon--wrapper {
+                    transform: rotate(-45deg);
+                }
+
+                .accordion--item-content {
+                    max-height: 1000px;
+
+                    p {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            }
+
+            .accordion--item-title {
+                align-items: center;
+                box-sizing: border-box;
+                display: flex;
+                font-size: 16px;
+                gap: 15px;
+                justify-content: space-between;
+                padding: 40px 0;
+                position: relative;
+                width: 100%;
+        
+                svg {
+                    width: 0.8em;
+                }
+
+                .icon--wrapper {
+                    transition: var(--default-transition);
+                }
+            }
+        
+            .accordion--item-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: var(--default-transition);
+                transition-timing-function: var(--default-cubic-transition);
+                width: 100%;
+        
+                p {
+                    font-size: 0.9em;
+                    margin-top: 0;
+                    margin-bottom: 30px;
+                    opacity: 0;
+                    transition: var(--default-transition);
+                    transform: translateY(10px);
+                }
+            }
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------
+Mobile
+-------------------------------------------------------------------------------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------
+Desktop
+-------------------------------------------------------------------------------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    
+}

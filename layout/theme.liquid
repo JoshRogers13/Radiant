@@ -26,8 +26,9 @@
 			--site-container: {{ settings.site_container }}px;
 			--site-content-container: {{ settings.content_container }}px;
 
-			--default-transition: .2s;
+			--default-transition: .3s ease-in-out;
 			--default-fade-opacity: .6;
+			--default-cubic-transition: cubic-bezier(.56, 0, .56, 1);
 
 			--body-color: #F5F5F5;
 			--body-text-color: #323232;
@@ -36,6 +37,7 @@
 
 		{{ 'theme.css' | asset_url | stylesheet_tag }}
 		{{ 'header.css' | asset_url | stylesheet_tag }}
+		{{ 'accordion.css' | asset_url | stylesheet_tag }}
 
 		{{ content_for_header }}
 
