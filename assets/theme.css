@@ -1,9 +1,14 @@
 /* --------------------------------------------------------------------------------------------------------------------------------------------------
 Common
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Cerebri";
+  src: url("{{ '[CerebriSans-Regular]' | asset_url }}") format("[ttf]");
+}
 body {
   background-color: var(--body-color);
   color: var(--body-text-color);
+  font-family: "Cerebri", sans-serif;
   margin: 0;
   min-height: 300vh;
   overflow-x: hidden;
@@ -35,6 +40,61 @@ body p {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+}
+form label {
+  display: block;
+  margin-bottom: 10px;
+  min-width: 100%;
+  width: 100%;
+}
+form input {
+  border: none;
+  height: 50px;
+  flex-grow: 1;
+  max-width: 320px;
+  padding: 0 10px;
+}
+form button {
+  background-color: #519757;
+  border: none;
+  color: white;
+  height: 50px;
+  padding: 0 20px;
+  width: 80px;
+}
+
+.form-message {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  margin: 10px auto 0 auto;
+  max-height: 0;
+  max-width: 400px;
+  opacity: 0;
+  text-align: center;
+  transition: var(--default-transition);
+}
+.form-message.show {
+  max-height: 200px;
+  opacity: 1;
+}
+.form-message.success-message {
+  background-color: #519757;
+  color: white;
+}
+.form-message.error-message {
+  background-color: red;
+  color: white;
 }
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------------
