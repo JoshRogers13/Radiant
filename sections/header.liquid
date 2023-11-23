@@ -1,0 +1,78 @@
+{%- liquid
+    assign logo = settings.site_logo
+    assign logoWidth = section.settings.logo_size
+%}
+
+<style>
+    .header--logo-container {
+        width: {{ logoWidth }}px;
+    }
+</style>
+
+<section id="store--header">
+    <div class="content-container">
+        <div class="store--header-inner-wrapper">
+            <div class="header--logo-wrapper">
+                <a href="" class="header--logo-container">
+                    {% if logo != blank %}
+                        <img src="{{ logo | image_url }}"
+                            width=""
+                            height=""
+                            loading="eager"
+                            class="header--logo"
+                        />
+                    {% else %}
+                        <p>{{ shop.name }}</p>
+                    {% endif %}
+                </a>
+            </div>
+            <div class="header--nav-wrapper">
+                {% for link in section.settings.menu.links %}
+                    <a href="{{ link.url }}">
+                        {{ link.title }}
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="header--link-wrapper">
+                <div class="header--icon-link">
+                    <a href="#">{% render 'icons' with 'search' %}</a>
+                </div>
+                <div class="header--icon-link">
+                    <a href="#">{% render 'icons' with 'user' %}</a>
+                </div>
+                <div class="header--icon-link header--icon-link-menu">
+                    {% render 'icons' with 'bars' %}
+                </div>
+                <div class="header--icon-link header--icon-link-cart">
+                    <a href="#">{% render 'icons' with 'cart' %}</a>
+                    <span class="cart-item-count">{{ cart.item_count }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+
+    {
+        "name": "Header",
+        "settings": [
+            {
+                "type": "range",
+                "id": "logo_size",
+                "label": "t:settings_schema.header.settings.logo_width.label",
+                "min": 41,
+                "max": 201,
+                "step": 2,
+                "default": 93,
+                "unit": "px"
+            },
+            {
+                "type": "link_list",
+                "id": "menu",
+                "label": "t:settings_schema.header.settings.menu.label"
+            }
+        ]
+    }
+
+{% endschema %}
