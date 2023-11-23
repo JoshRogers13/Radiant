@@ -1,0 +1,62 @@
+<section id="{{ section.id }}" class="section--wrapper">
+    <div class="content-container">
+        {%- assign newsletter_form_id = 'newsletter-' | append: section.id -%}
+        {% form 'customer', id: newsletter_form_id %}
+            <input type="email" placeholder="Enter Email..." />
+            <button type="submit">Submit</button> 
+        {% endform %}
+        <p class="success-message form-message">Thanks for being awesome!</p>
+        <p class="error-message form-message">There was an error!</p>
+    </div>
+</section>
+
+<script>
+    var sectionId = '{{ section.id }}',
+        form = document.querySelector('form'),
+        submitBtn = form.querySelector('button[type="submit"]');
+
+    submitBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: "/pages/newsletter-endpoint",
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                document.querySelectorAll('.form-message').forEach(message => {
+                    message.classList.remove('show');
+                });
+
+                if(data.page.body_html.includes("success")) {
+                    document.querySelector('.success-message').classList.add('show')
+                } else {
+                    document.querySelector('.error-message').classList.add('show')
+                }
+
+                setTimeout(() => {
+                    document.querySelectorAll('.form-message').forEach(message => {
+                        message.classList.remove('show');
+                    });
+                }, 3000)
+            },
+            error: function() {
+                // Handle errors
+                alert('There was an error');
+            }
+        });
+    });
+
+</script>
+
+{% schema %}
+
+{
+    "name": "Newsletter",
+    "presets": [
+        {
+            "name": "Newsletter"
+        }
+    ]
+}
+
+{% endschema %}
