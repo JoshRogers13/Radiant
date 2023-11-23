@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "main",
+      "settings": {
+      }
+    },
+    "185958fb-6555-4ea1-aece-ba16e25cb520": {
+      "type": "accordion",
+      "blocks": {
+        "template--16100087857319__185958fb-6555-4ea1-aece-ba16e25cb520-Item-1": {
+          "type": "Item",
+          "settings": {
+            "accordion_item_title": "What is your brand mission?",
+            "accordion_item_content": "<p>Our brand mission is to empower individuals by providing innovative solutions that enhance everyday experiences. We are committed to fostering positive change and creating a lasting impact through our products and services.<\/p>"
+          }
+        },
+        "template--16100087857319__185958fb-6555-4ea1-aece-ba16e25cb520-Item-2": {
+          "type": "Item",
+          "settings": {
+            "accordion_item_title": "When was the brand founded and why?",
+            "accordion_item_content": "<p>The brand was founded in 2010 with a mission to revolutionize sustainable living through cutting-edge technology and eco-friendly products. Inspired by the need for innovative solutions to environmental challenges, we strives to make a positive impact on the world by promoting a greener and more sustainable future.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16100087857319__185958fb-6555-4ea1-aece-ba16e25cb520-Item-1",
+        "template--16100087857319__185958fb-6555-4ea1-aece-ba16e25cb520-Item-2"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "185958fb-6555-4ea1-aece-ba16e25cb520"
+  ]
+}
