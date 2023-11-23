@@ -1,0 +1,31 @@
+{
+    "settings_schema": {
+        "header": {
+            "settings": {
+                "menu": {
+                    "label": "Select Menu"
+                },
+                "logo_width": {
+                    "label": "Logo Width"
+                }
+            }
+        },
+        "layout": {
+            "settings": {
+                "site_container": {
+                    "label": "Site Container Max Width"
+                },
+                "content_container": {
+                    "label": "Site Content Container Max Width"
+                }
+            }
+        },
+        "logo": {
+            "settings": {
+                "site_logo": {
+                    "label": "Site Logo"
+                }
+            }
+        }
+    }
+}
