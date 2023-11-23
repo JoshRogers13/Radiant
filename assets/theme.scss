@@ -6,7 +6,12 @@ body {
     color: var(--body-text-color);
     margin: 0;
     min-height: 300vh;
-    padding: 0;
+    overflow-x: hidden;
+    padding: 120px 0 0 0;
+
+    p {
+        margin-bottom: 0;
+    }
 }
 
 .main-content {
@@ -40,6 +45,14 @@ body {
 Mobile
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .section--wrapper {
+        padding: 40px 0; 
+    }
+
     .content-container {
         padding: 0 20px;
     }
@@ -49,6 +62,10 @@ Mobile
 Desktop
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media (min-width: 768px) {
+    .section--wrapper {
+        padding: 80px 0;
+    }
+
     .content-container {
         padding: 0 40px;
     }
