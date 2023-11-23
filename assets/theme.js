@@ -1,20 +1,26 @@
 // Show header on scroll up or top of the page
 var header = $('#store--header');
-var lastScrollTop = 0;
 var headerHeight = header.outerHeight(true);
+var currentDistance = window.pageYOffset;
+
+if(currentDistance == 0) {
+    header.removeClass('sticky headHide');
+} else {
+    header.addClass('headHide').removeClass('sticky');
+}
+
+document.onscrollend = event => {
+    currentDistance = window.pageYOffset;
+}
 
 $(window).scroll(function(){
-    var st = $(this).scrollTop();
+    var newScroll = window.pageYOffset;
 
-    if (st == 0 ){
-        header.removeClass('sticky', 'headHide');
-    } else if (st > lastScrollTop) {
-        header.removeClass('sticky').addClass('headHide');
-    } else if ( st < lastScrollTop ){
-        header.removeClass('headHide').addClass('sticky');
+    if (newScroll < currentDistance) {
+        header.addClass('sticky').removeClass('headHide');
+    } else if(newScroll > currentDistance + 100) {
+        header.addClass('headHide').removeClass('sticky');
     }
-
-    lastScrollTop = st;
 });
 
 // Show Mobile Menu
