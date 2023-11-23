@@ -2,63 +2,58 @@
 Common
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 body {
-    background-color: var(--body-color);
-    color: var(--body-text-color);
-    margin: 0;
-    min-height: 300vh;
-    padding: 0;
+  background-color: var(--body-color);
+  color: var(--body-text-color);
+  margin: 0;
+  min-height: 300vh;
+  padding: 0;
 }
 
 .main-content {
-    margin: 0 auto;
-    max-width: var(--site-container);
+  margin: 0 auto;
+  max-width: var(--site-container);
 }
 
 .content-container {
-    box-sizing: border-box;
-    margin: 0 auto;
-    max-width: var(--site-content-container);
-
-    a {
-        color: var(--body-text-color);
-        text-decoration: none;
-        transition: var(--default-transition);
-
-        &:hover {
-            opacity: var(--default-fade-opacity);
-        }
-    }
-
-    .icon--wrapper {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: var(--site-content-container);
+}
+.content-container a {
+  color: var(--body-text-color);
+  text-decoration: none;
+  transition: var(--default-transition);
+}
+.content-container a:hover {
+  opacity: var(--default-fade-opacity);
+}
+.content-container .icon--wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* --------------------------------------------------------------------------------------------------------------------------------------------------
 Mobile
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-    .content-container {
-        padding: 0 20px;
-    }
+  .content-container {
+    padding: 0 20px;
+  }
 }
-
 /* --------------------------------------------------------------------------------------------------------------------------------------------------
 Desktop
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media (min-width: 768px) {
-    .content-container {
-        padding: 0 40px;
-    }
+  .content-container {
+    padding: 0 40px;
+  }
 }
-
 /* --------------------------------------------------------------------------------------------------------------------------------------------------
 Large Desktop
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 @media (min-width: 1200px) {
-    .content-container {
-        padding: 0 80px;
-    }
-}
+  .content-container {
+    padding: 0 80px;
+  }
+}/*# sourceMappingURL=theme.css.map */
