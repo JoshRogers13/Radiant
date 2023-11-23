@@ -1,0 +1,120 @@
+/* --------------------------------------------------------------------------------------------------------------------------------------------------
+Common
+-------------------------------------------------------------------------------------------------------------------------------------------------- */
+#store--header {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .05);
+    box-sizing: border-box;
+    left: 0;
+    position: fixed;
+    right: 0;
+    transition: var(--default-transition);
+    top: 0;
+    z-index: 2;
+
+    &.headHide {
+        transform: translateY(-100%);
+    }
+
+    &.sticky {
+        transform: translateY(0);
+    }
+
+    .store--header-inner-wrapper {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .header--logo-container {
+            align-items: center;
+            display: flex;
+            justify-content: flex-start;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .header--nav-wrapper {
+            display: flex;
+        }
+
+        .header--link-wrapper {
+            align-items: center;
+            display: flex;
+            justify-content: flex-end;
+            
+            .header--icon-link {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                position: relative;
+
+                svg {
+                    font-size: 20px;
+                    width: 20px;
+                }
+
+                &.header--icon-link-cart {
+                    background-color: #E3F0BD;
+                    border-radius: 100px;
+                    height: 44px;
+                    width: 44px;
+
+                    .cart-item-count {
+                        align-items: center;
+                        background-color: white;
+                        border: 1px solid var(--body-text-color);
+                        border-radius: 100px;
+                        bottom: 0;
+                        display: flex;
+                        height: 17px;
+                        justify-content: center;
+                        position: absolute;
+                        right: 0;
+                        text-align: center;
+                        transform: translate(5px, 5px);
+                        width: 17px;
+                        z-index: 2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------
+Mobile
+-------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------
+Desktop
+-------------------------------------------------------------------------------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    #store--header {
+        padding: 20px 0;
+        gap: 20px;
+
+        .store--header-inner-wrapper {
+            .header--logo-wrapper,
+            .header--link-wrapper {
+                width: 25%;
+            }
+        
+            .header--link-wrapper {
+                gap: 30px;
+        
+                .header--icon-link-menu {
+                    display: none;
+                }
+            }
+        
+            .header--nav-wrapper {
+                align-items: center;
+                gap: 40px;
+                justify-content: center;
+                width: calc(50% - 20px);
+            }
+        }
+    }
+}
