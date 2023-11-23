@@ -1,1 +1,24 @@
-{"current":{"content_for_index":[]},"presets":{"Default":{"content_for_index":[]}}}
+{
+  "current": {
+    "site_logo": "shopify:\/\/shop_images\/brand-logo.svg",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_size": 93,
+          "menu": "main-menu"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
+  "presets": {
+    "Default": {
+      "content_for_index": [
+
+      ]
+    }
+  }
+}

@@ -1,1 +1,37 @@
-[]
+[
+    {
+        "name": "Layout",
+        "settings": [
+			{
+				"type": "range",
+				"id": "site_container",
+				"label": "t:settings_schema.layout.settings.site_container.label",
+				"min": 1200,
+				"max": 3000,
+				"step": 30,
+				"unit": "px",
+				"default": 3000
+			},
+			{
+				"type": "range",
+				"id": "content_container",
+				"label": "t:settings_schema.layout.settings.content_container.label",
+				"min": 540,
+				"max": 3000,
+				"step": 30,
+				"unit": "px",
+				"default": 1200
+			}
+		]
+	},
+    {
+        "name": "Logo",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "site_logo",
+                "label": "t:settings_schema.logo.settings.site_logo.label"
+            }
+        ]
+    }
+]
