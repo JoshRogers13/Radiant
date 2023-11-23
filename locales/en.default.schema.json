@@ -26,6 +26,39 @@
                     "label": "Site Logo"
                 }
             }
+        },
+        "blocks": {
+            "settings": {
+                "block_title": {
+                    "label": "Block Title"
+                },
+                "block_content": {
+                    "label": "Block Content"
+                }
+            }
+        },
+        "sections": {
+            "settings": {
+                "section_background_color": {
+                    "label": "Section Background Color"
+                },
+                "section_heading_color": {
+                    "label": "Section Heading Color"
+                },
+                "section_text_color": {
+                    "label": "Section Text Color"
+                }
+            },
+            "accordion": {
+                "settings": {
+                    "accordion_items_background_color": {
+                        "label": "Accordion Items Background Color"
+                    },
+                    "accordion_items_text_color": {
+                        "label": "Accordion Items Text Color"
+                    }
+                }
+            }
         }
     }
 }
