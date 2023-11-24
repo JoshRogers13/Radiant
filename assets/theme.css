@@ -3,7 +3,7 @@ Common
 -------------------------------------------------------------------------------------------------------------------------------------------------- */
 @font-face {
   font-family: "Cerebri";
-  src: url("{{ '[CerebriSans-Regular]' | asset_url }}") format("[ttf]");
+  src: url("{{ 'CerebriSans-Regular.ttf' | asset_url }}") format("ttf");
 }
 body {
   background-color: var(--body-color);
